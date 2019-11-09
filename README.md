@@ -1,2 +1,4 @@
-# 09-Juicy-Breakout
-For the Juicy Breakout assignment for c220
+# Breakout
+A generic breakout game created in Godot.
+
+If you are needing a place to start on your project, this should be an easy project to make a little more "juicy".
