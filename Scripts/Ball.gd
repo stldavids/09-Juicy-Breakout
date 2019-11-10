@@ -63,21 +63,23 @@ func _physics_process(delta):
 	# Check for collisions
 	var bodies = get_colliding_bodies()
 	for body in bodies:
-		Camera.add_trauma(0.5)
+		Camera.add_trauma(0.1)
 		add_trauma(2.0)
 		if body.is_in_group("Tiles"):
 			Game.change_score(body.points)
+			Camera.add_trauma(0.25)
 			add_color(1.0)
 			body.find_node("Smoke").emitting = true
-			Blip.play()
+			Blip.playing = true
 			body.kill()
 		if body.name == "Paddle":
-			Applause.play()
+			Applause.playing = true
 			var tile_rows = get_tree().get_nodes_in_group("Tile Row")
 			for tile in tile_rows:
 				tile.add_trauma(0.5)
 		if body.name == "Wall":
-			Boing.play()
+			Boing.playing = true
+			Camera.add_trauma(0.2)
 
 	
 	if position.y > get_viewport().size.y:
