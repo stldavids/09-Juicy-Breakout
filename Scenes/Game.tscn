@@ -18,6 +18,7 @@ anchor_mode = 0
 current = true
 
 [node name="Paddle" type="KinematicBody2D" parent="."]
+editor/display_folded = true
 position = Vector2( 544, 552 )
 script = ExtResource( 2 )
 __meta__ = {
@@ -43,8 +44,10 @@ editor/display_folded = true
 polygon = PoolVector2Array( 0, 632, 0, 0, 1024, 0, 1024, 632, 1064, 632, 1064, -40, -48, -40, -48, 632 )
 
 [node name="Tiles" type="Node2D" parent="."]
+editor/display_folded = true
 
 [node name="Tile Row 1" type="Node2D" parent="Tiles"]
+editor/display_folded = true
 
 [node name="Tile" parent="Tiles/Tile Row 1" instance=ExtResource( 3 )]
 position = Vector2( 184, 296 )
@@ -225,6 +228,7 @@ text = "Lives:"
 script = ExtResource( 5 )
 
 [node name="Starting" type="Label" parent="."]
+editor/display_folded = true
 margin_right = 1024.0
 margin_bottom = 112.0
 align = 1
