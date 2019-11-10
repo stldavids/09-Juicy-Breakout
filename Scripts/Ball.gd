@@ -1,8 +1,14 @@
 extends RigidBody2D
 
 onready var Game = get_node("/root/Game")
+onready var Camera = get_node("/root/Game/Camera")
 onready var Starting = get_node("/root/Game/Starting")
 onready var Comet = get_node("/root/Game/Comet")
+
+#sounds
+onready var Blip = get_node("/root/Game/Blip")
+onready var Boing = get_node("/root/Game/Boing")
+onready var Applause = get_node("/root/Game/Applause")
 
 var _decay_rate = 0.0
 var _max_offset = 4
@@ -57,16 +63,21 @@ func _physics_process(delta):
 	# Check for collisions
 	var bodies = get_colliding_bodies()
 	for body in bodies:
+		Camera.add_trauma(0.5)
 		add_trauma(2.0)
 		if body.is_in_group("Tiles"):
 			Game.change_score(body.points)
 			add_color(1.0)
 			body.find_node("Smoke").emitting = true
+			Blip.play()
 			body.kill()
 		if body.name == "Paddle":
+			Applause.play()
 			var tile_rows = get_tree().get_nodes_in_group("Tile Row")
 			for tile in tile_rows:
 				tile.add_trauma(0.5)
+		if body.name == "Wall":
+			Boing.play()
 
 	
 	if position.y > get_viewport().size.y:
