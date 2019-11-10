@@ -73,6 +73,7 @@ func _physics_process(delta):
 			Blip.playing = true
 			body.kill()
 		if body.name == "Paddle":
+			body.find_node("Confetti").emitting = true
 			Applause.playing = true
 			var tile_rows = get_tree().get_nodes_in_group("Tile Row")
 			for tile in tile_rows:
@@ -81,6 +82,8 @@ func _physics_process(delta):
 			Boing.playing = true
 			Camera.add_trauma(0.2)
 
+	rotate(_rotation)
+	_rotation += (_rotation_speed * linear_velocity.normalized().x)
 	
 	if position.y > get_viewport().size.y:
 		Game.change_lives(-1)
