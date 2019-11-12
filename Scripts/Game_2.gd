@@ -1,7 +1,7 @@
 extends Node2D
 
 export var lives = 3
-export var score = 0
+export var score = 500
 var max_score = 0
 
 var new_ball = preload("res://Scenes/Ball.tscn")
@@ -19,8 +19,8 @@ func change_score(s):
 	score += s
 	$Score.update_score(score)
 	#if there are no more tiles, show the winning screen
-	if len(get_tree().get_nodes_in_group("Tiles")) == 1:
-		get_tree().change_scene("res://Scenes/Game_2.tscn")
+	if len(get_tree().get_nodes_in_group("Tiles")) == 2:
+		get_tree().change_scene("res://Scenes/Win.tscn")
 
 func change_lives(l):
 	lives += l
